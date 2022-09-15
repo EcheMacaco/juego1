@@ -1,36 +1,19 @@
 import React from "react";
 import "../App.css";
 
-// const clicMenor = () => {
-
-// document.getElementById("componente-img")
-
-// };
-
-// const clicMayor = () => {
-
-//   document.getElementById("componente-img")
-//   return(
-
-//     console.log("a")
-
-//   )
-// };
-
-const Botones = ({ cambiarlo }) => {
+const Botones = ({esMenor, esMayor, estado}) => {
+ 
   return (
     <>
-      <button className="btn" onClick={cambiarlo}>
-        botonnnnnnn
+      <button className="btn" onClick={esMayor} disabled={estado}>
+       Mayor o =
       </button>
+      <button className="btn" onClick={esMenor} disabled={estado}>
+       Menor o =
+      </button>
+ 
     </>
   );
 };
 
 export default Botones;
-//  <button
-//      type="boton"
-//    className="btn" onClick={clicMenor}
-//       >
-//         ES MENOR{" "}
-//       </button>
