@@ -1,30 +1,22 @@
 import "./App.css";
 import atras from "./img/atras.png";
 import imagenes from "./imagenes";
-import Botones from "./Componentes/Botones";
-import BotonReiniciar from "./Componentes/BotonReiniciar";
+import BotonesMayorMenor from "./Componentes/BotonesMayorMenor";
+import BotonesEstado from "./Componentes/BotonesEstado";
 import React, { useState } from "react";
 
-
+let cartasJugadas = imagenes;
+let contador = 0;
+let cartajugada = {
+  src: { atras },
+  valor: 0,
+  id: 0,
+};
 function App() {
-  const MAX_CARTAS = 23;
-  let cartasJugadas = imagenes;
-  let contador = -1;
-  let cartajugada = {
-    src: { atras },
-    valor: 0,
-    id: 0,
-  };
-  
-
-   const [jugando, setJugando] = useState(true);
-
-  // if (estadoDeJuego) {
-  //   console.log("aca iria el cartel");
-  // } else {
-  //   console.log("chau cartl");
-  // }
-  const [textoMensaje, setTextoMensaje] = useState("JUGANDO!!");
+  const [jugando, setJugando] = useState(false);
+  const [textoMensaje, setTextoMensaje] = useState(
+    "COMENCEMOS UN NUEVO JUEGO..."
+  );
 
   function getRandomMayor() {
     let min = 0;
@@ -44,11 +36,10 @@ function App() {
       );
       setJugando(false);
     } else {
-      console.log("el valor es mayor porque es : " + nuevaCarta.valor);
       setJugando(true);
+      setTextoMensaje("MUY BIEN!");
     }
     cartajugada = nuevaCarta;
-
     cartasJugadas = cartasJugadas.filter(
       (cartasJugadas) => cartasJugadas.id !== nuevaCarta.id
     );
@@ -66,7 +57,7 @@ function App() {
     if (nuevaCarta.valor > cartajugada.valor && cartajugada.valor !== 0) {
       setTextoMensaje(
         ` ${
-          "PERDISTE!!" +
+          "PERDISTE!! " +
           nuevaCarta.valor +
           " es mayor que " +
           cartajugada.valor +
@@ -77,51 +68,64 @@ function App() {
       );
       setJugando(false);
     } else {
-      console.log("el valor es menor porque es : " + nuevaCarta.valor);
       setJugando(true);
+      console.log(cartajugada.valor + " = valor carta jugada");
+      console.log(nuevaCarta.valor + " = valor carta nueva");
+      setTextoMensaje("MUY BIEN!");
     }
     cartajugada = nuevaCarta;
     cartasJugadas = cartasJugadas.filter(
       (cartasJugadas) => cartasJugadas.id !== nuevaCarta.id
     );
-    console.log(cartasJugadas);
     contador = contador + 1;
-    console.log(contador);
   }
   function reiniciar() {
-    if (document.getElementById("cartaFrente").src != `${atras}`){
-    setJugando(true);
+    setJugando(false);
     cartasJugadas = imagenes;
-    contador = -1;
+    contador = 0;
     document.getElementById("cartaFrente").src = `${atras}`;
     cartajugada.valor = 0;
-    setTextoMensaje("JUGANDO!!");
+    setTextoMensaje("QUIERES COMENZAR A JUGAR ???");
+  }
+
+  function comenzar() {
+    if (jugando === false && contador === 0) {
+      cartasJugadas = imagenes;
+      let min = 0;
+      let max = cartasJugadas.length - 1;
+      let randomIndex = Math.round(Math.random() * (max - min) + min);
+      let nuevaCarta = cartasJugadas[randomIndex];
+      document.getElementById("cartaFrente").src = `${nuevaCarta.src}`;
+      cartajugada = nuevaCarta;
+      cartasJugadas = cartasJugadas.filter(
+        (cartasJugadas) => cartasJugadas.id !== nuevaCarta.id
+      );
+      console.log(cartajugada.valor + " = valor carta jugada");
+      console.log(nuevaCarta.valor + " = valor de nueva carta");
+      contador = 0;
+      setTextoMensaje("A JUGAR!");
+      setJugando(true);
     }
-    else{
- console.log("else del REINICIAR")
-    }
-   
   }
 
   return (
     <>
       <div className="div-app">
-        <div className="cartas">
-          <img id="carta" src={atras} className="carta0" />
+        <div className="mesa">
+          <img id="carta" src={atras} className="carta" />
           <img id="cartaFrente" src={atras} className="carta" />
-          
-        </div> 
-        <div className="mensaje">{textoMensaje}</div>
+        </div>
         <div className="botones">
-        
-            <Botones 
-              esMayor={getRandomMayor} estado={!jugando} //cambiar estado del boton evaluando estado del juego!
-              esMenor={getRandomMenor} 
-            />
-          
-          <BotonReiniciar reiniciar={reiniciar} />
+            <BotonesMayorMenor
+              esMayor={getRandomMayor}
+              estadoBtn={!jugando}
+              esMenor={getRandomMenor}
+            />{" "}
           </div>
-       
+          <div className="mensaje">{textoMensaje}</div>
+        <div className="botones">
+          <BotonesEstado reiniciar={reiniciar} comenzar={comenzar} />
+        </div>
       </div>
     </>
   );

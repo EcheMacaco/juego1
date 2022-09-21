@@ -22,6 +22,22 @@ import seisp from "./img/seis-p.png";
 import seist from "./img/seis-t.png";
 import seisd from "./img/seis-d.png";
 import seisc from "./img/seis-c.png";
+import sietep from "./img/siete-p.png";
+import sietet from "./img/siete-t.png";
+import sieted from "./img/siete-d.png";
+import sietec from "./img/siete-c.png";
+import ochop from "./img/ocho-p.png";
+import ochot from "./img/ocho-t.png";
+import ochod from "./img/ocho-d.png";
+import ochoc from "./img/ocho-c.png";
+import nuevep from "./img/nueve-p.png";
+import nuevet from "./img/nueve-t.png";
+import nueved from "./img/nueve-d.png";
+import nuevec from "./img/nueve-c.png";
+import diezp from "./img/diez-p.png";
+import diezt from "./img/diez-t.png";
+import diezd from "./img/diez-d.png";
+import diezc from "./img/diez-c.png";
 
 const imagenes = [
 
@@ -144,6 +160,86 @@ const imagenes = [
     src: seist,
     valor: 6,
     id: "024"
+  },
+  {
+    src: sietec,
+    valor: 7,
+    id: "025"
+  },
+  {
+    src: sieted,
+    valor: 7,
+    id: "026"
+  },
+  {
+    src: sietep,
+    valor: 7,
+    id: "027"
+  },
+  {
+    src: sietet,
+    valor: 7,
+    id: "028"
+  },
+  {
+    src: ochoc,
+    valor: 8,
+    id: "029"
+  },
+  {
+    src: ochod,
+    valor: 8,
+    id: "030"
+  },
+  {
+    src: ochop,
+    valor: 8,
+    id: "031"
+  },
+  {
+    src: ochot,
+    valor: 8,
+    id: "032"
+  },
+  {
+    src: nuevec,
+    valor: 9,
+    id: "033"
+  },
+  {
+    src: nueved,
+    valor: 9,
+    id: "034"
+  },
+  {
+    src: nuevep,
+    valor: 9,
+    id: "035"
+  },
+  {
+    src: nuevet,
+    valor: 9,
+    id: "036"
+  },
+  {
+    src: diezc,
+    valor: 10,
+    id: "037"
+  },
+  {
+    src: diezd,
+    valor: 10,
+    id: "038"
+  },
+  {
+    src: diezp,
+    valor: 10,
+    id: "039"
+  },
+  {
+    src: diezt,
+    valor: 10,
+    id: "040"
   },
 ];
 
