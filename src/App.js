@@ -5,6 +5,8 @@ import BotonesMayorMenor from "./Componentes/BotonesMayorMenor";
 import BotonesEstado from "./Componentes/BotonesEstado";
 import React, { useState } from "react";
 
+
+
 let cartasJugadas = imagenes;
 let contador = 0;
 let cartajugada = {
@@ -17,6 +19,8 @@ function App() {
   const [textoMensaje, setTextoMensaje] = useState(
     "COMENCEMOS UN NUEVO JUEGO..."
   );
+
+  
 
   function getRandomMayor() {
     let min = 0;

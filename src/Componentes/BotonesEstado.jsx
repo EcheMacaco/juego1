@@ -1,15 +1,14 @@
 import React from "react";
 import "../App.css";
 
-const BotonesEstado = ({reiniciar, comenzar}) => {
- 
+const BotonesEstado = ({ reiniciar, comenzar }) => {
   return (
     <>
       <button className="btn-reiniciar" onClick={reiniciar}>
-       REINICIAR
+        REINICIAR
       </button>
-      <button className="btn-comenzar" onClick={comenzar}> 
-       COMENZAR
+      <button className="btn-comenzar" onClick={comenzar}>
+        COMENZAR
       </button>
     </>
   );
